@@ -1,6 +1,5 @@
 class CaixaDaLanchonete {
-    //Atributo que contem códigos e valores para a solução
-    //array dos itens que serão comprados
+    //Atributo que contem Dados dos itens para desenvolver a solução
     cardapio = [
         { codigo: 'cafe', descricao: 'Café', valor: 3.00 },
         { codigo: 'chantily', descricao: 'Chantily (extra do Café)', valor: 1.50 },
@@ -23,12 +22,12 @@ class CaixaDaLanchonete {
         }
     }
     
-    //Metodo que verifica se o item principal está no pedido ao tentar comprar o item extra
+    //Método que verifica se o item principal está no pedido ao tentar comprar o item extra
     verificarCafeNoPedido(itens) {
         //Em algum dos itens que serão comprados está incluso o código café?
         return itens.some(codigoDoItem => codigoDoItem.includes('cafe'));
-    }    
-
+    }
+    //O mesmo acima
     verificarSanduicheNoPedido(itens) {        
         return itens.some(codigoDoItem => codigoDoItem.includes('sanduiche'));
     }
@@ -48,10 +47,10 @@ class CaixaDaLanchonete {
         //Valor total do pedido sem taxas ou desconto
         let totalDebito = 0;
 
-        //"O segundo parâmetro contém uma array dos itens que serão comprados.         
+        //"O segundo parâmetro contém um array dos itens que serão comprados."(vide README)
         for (const itemComprado of itens) {
             /*Cada item "comprado" é uma string contendo o código do item e a quantidade do mesmo separados por uma vírgula.
-            Exemplo: ['cafe,1','chantily,1']"*/
+            Exemplo: ['cafe,1','chantily,1']"(vide README)*/
             const [codigoDoItem, quantidade] = itemComprado.split(",");
 
             //Verifica se o código do item informado é um item do cardápio
@@ -59,11 +58,11 @@ class CaixaDaLanchonete {
                 //item do cardápio cujo o código do item do cardápio seja IGUAL ao código do item comprado
                 itemEscolhidoDoCardapio => itemEscolhidoDoCardapio.codigo === codigoDoItem
                 );            
-            //Se o item do pedido não estiver no cardápio
+            //Verificar se o item do pedido está no Cardápio
             if (!itemEscolhidoDoCardapio) {
                 return 'Item inválido!';
             }
-            //Verificar se a quantidade é pelo menos 1 unidade
+            //Verifica se a quantidade é pelo menos 1 unidade
             if (quantidade <= 0) {
                 return 'Quantidade inválida!';
             }
